@@ -24,7 +24,13 @@ public class ArraysNumbers {
     }
 
     public int[] difference(int[] Array1, int[] Array2)
-    {
+    {   boolean NumberOneBigger=true;
+        if(!BiggerNumber(Array1,Array2)) {
+            int[] auxiliar = Array1.clone();
+            Array1=Array2;
+            Array2=auxiliar;
+            NumberOneBigger=false;
+        }
         int[] result=new int[Array1.length];
         for(int i=Array1.length-1;i>=0;i--)
         {
@@ -51,8 +57,26 @@ public class ArraysNumbers {
             int[] ShiftedResult = new int[result.length - 1];
             for (int i = 0; i < result.length - 1; i++)
                 ShiftedResult[i] = result[i + 1];
+            if(!NumberOneBigger)
+                ShiftedResult[0]=-ShiftedResult[0];
             return ShiftedResult;
         }
+        if(!NumberOneBigger)
+            result[0]=-result[0];
         return result;
     }
+
+    private boolean BiggerNumber(int[] Array1, int[] Array2)
+    {
+        for(int i=0;i<Array1.length;i++)
+        {
+            if(Array1[i]>Array2[i])
+                return true;
+            if(Array1[i]<Array2[i])
+                return false;
+        }
+        return true;
+    }
 }
+
+
