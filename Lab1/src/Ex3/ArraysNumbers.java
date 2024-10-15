@@ -72,7 +72,7 @@ public class ArraysNumbers {
         return result;
     }
 
-    public int[] Multiplication(int[] Array1, int multiplier)
+    public int[] multiplication(int[] Array1, int multiplier)
     {
         int[]result=new int[Array1.length+1];
         int carry=0;
@@ -92,6 +92,44 @@ public class ArraysNumbers {
         return ShiftedResult;
     }
 
+
+    public int[] division(int [] Array1, int divisor)
+    {   int []arr=Array1.clone();
+        int[] result=new int[arr.length];
+        int quotient;
+        for(int i=0;i<arr.length;i++)
+        {
+            if(i==0)
+            {
+                if(arr[i]>=divisor)
+                {
+                    quotient=arr[i]/divisor;
+                    result[i]=quotient;
+                    arr[i]=arr[i]-quotient*divisor;
+                }
+                continue;
+            }
+            if(arr[i-1]!=0)
+            {
+                quotient=(arr[i-1]*10+arr[i])/divisor;
+                result[i]=quotient;
+                arr[i]=(arr[i-1]*10+arr[i])-quotient*divisor;
+            }
+            else
+            {
+                quotient=arr[i]/divisor;
+                result[i]=quotient;
+                arr[i]=arr[i]-quotient*divisor;
+            }
+        }
+        if(result[0]==0) {
+            int[] ShiftedResult = new int[result.length - 1];
+            for (int i = 0; i < result.length - 1; i++)
+                ShiftedResult[i] = result[i + 1];
+            return ShiftedResult;
+        }
+        return result;
+    }
     private boolean BiggerNumber(int[] Array1, int[] Array2)
     {
         for(int i=0;i<Array1.length;i++)
