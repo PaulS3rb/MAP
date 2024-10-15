@@ -12,7 +12,13 @@ public class ArraysNumbers {
             carry=sum/10;
         }
         result[0]=carry;
-        return result;
+        if(result[0]==1)
+            return result;
+
+        int[] ShiftedResult = new int[result.length-1];
+        for(int i=0;i<result.length-1;i++)
+            ShiftedResult[i]=result[i+1];
+        return ShiftedResult;
     }
 
 }
