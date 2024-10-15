@@ -43,4 +43,22 @@ public class Numbers {
         return sum;
     }
 
+    public int MinSum(int [] numbers)
+    {
+        int sum=0;
+        boolean found=false;
+        int maxnumber=FindMaximum(numbers);
+        for(int i=0;i<numbers.length;i++) {
+            if (numbers[i] == maxnumber) {
+                if (!found) {
+                    found = true;
+                    continue;
+                }
+            }
+
+            sum+=numbers[i];
+
+        }
+        return sum;
+    }
 }

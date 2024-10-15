@@ -8,5 +8,6 @@ public class Main {
         System.out.println(n.FindMaximum(numbers));
         System.out.println(n.FindMinimum(numbers));
         System.out.println(n.MaxSum(numbers));
+        System.out.println(n.MinSum(numbers));
     }
 }
