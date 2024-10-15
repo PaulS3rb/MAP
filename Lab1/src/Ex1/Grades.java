@@ -1,5 +1,7 @@
 package Ex1;
 
+import java.text.DecimalFormat;
+
 public class Grades {
 
 
@@ -16,9 +18,17 @@ public class Grades {
         return insufficientGrades;
     }
 
-    public int[] AverageGrade(int[] grades)
+    public double AverageGrade(int[] grades)
     {
-        return grades;
+        double sum=0;
+        for(int i=0;i<grades.length;i++)
+        {
+            sum+=grades[i];
+        }
+        double result=sum/grades.length;
+        DecimalFormat formatter = new DecimalFormat("##.00");
+        result= Double.parseDouble(formatter.format(result));
+        return result;
     }
 
     public int[] AdjustGrades(int [] grades)
