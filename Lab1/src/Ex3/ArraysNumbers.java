@@ -1,5 +1,7 @@
 package Ex3;
 
+import static java.lang.Math.abs;
+
 public class ArraysNumbers {
 
     public int[] sum(int[] Array1, int[] Array2)
@@ -21,4 +23,31 @@ public class ArraysNumbers {
         return ShiftedResult;
     }
 
+    public int[] difference(int[] Array1, int[] Array2)
+    {
+        int[] result=new int[Array1.length];
+        for(int i=Array1.length-1;i>=0;i--)
+        {
+            int diff=Array1[i]-Array2[i];
+            if(diff>0)
+            {
+                result[i]=diff;
+            }
+            else
+            {
+                result[i]=10-abs(diff);
+                int j=i-1;
+                while(result[j]==0)
+                {
+                    Array1[j]=9;
+                    j--;
+                }
+                Array1[j]--;
+            }
+        }
+
+
+
+        return result;
+    }
 }
