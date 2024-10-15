@@ -29,7 +29,7 @@ public class ArraysNumbers {
         for(int i=Array1.length-1;i>=0;i--)
         {
             int diff=Array1[i]-Array2[i];
-            if(diff>0)
+            if(diff>=0)
             {
                 result[i]=diff;
             }
@@ -37,7 +37,7 @@ public class ArraysNumbers {
             {
                 result[i]=10-abs(diff);
                 int j=i-1;
-                while(result[j]==0)
+                while(Array1[j]==0)
                 {
                     Array1[j]=9;
                     j--;
@@ -46,8 +46,13 @@ public class ArraysNumbers {
             }
         }
 
-
-
+        if(result[0]==0)
+        {
+            int[] ShiftedResult = new int[result.length - 1];
+            for (int i = 0; i < result.length - 1; i++)
+                ShiftedResult[i] = result[i + 1];
+            return ShiftedResult;
+        }
         return result;
     }
 }
