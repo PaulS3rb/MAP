@@ -33,6 +33,32 @@ public class Grades {
 
     public int[] AdjustGrades(int [] grades)
     {
+        int [] NewArray=new int[grades.length];
+        for(int i = 0; i < grades.length; i++)
+        {
+            NewArray[i]=grades[i];
+            if(grades[i] < 38)
+            {
+                continue;
+            }
+            else
+            {
+                if(grades[i]%5>=3)
+                {
+                    NewArray[i]=grades[i];
+                    while (NewArray[i] % 5 != 0)
+                        NewArray[i]++;
+                }
+
+            }
+
+        }
+        return NewArray;
+    }
+
+    public int MaximalGrade(int[] grades)
+    {
+        int max=-1;
 
         for(int i = 0; i < grades.length; i++)
         {
@@ -46,13 +72,17 @@ public class Grades {
                 {
                     while (grades[i] % 5 != 0)
                         grades[i]++;
-
+                    if(grades[i]>max)
+                        max=grades[i];
                 }
 
             }
         }
-        return grades;
+        return max;
     }
+
+
+
     private int[] AddToArray(int[] array, int grade)
     {
         int [] newArray = new int[array.length + 1];
