@@ -22,4 +22,18 @@ public class Shop {
         return max;
     }
 
+    public int MostExpensiveAffordableUSB(int[] USBs,int Budget)
+    {
+        int MinimalDifference = Integer.MAX_VALUE;
+        int USB=-1;
+        for (int i = 0; i < USBs.length; i++)
+        {
+            if (Budget - USBs[i] < MinimalDifference && Budget >= USBs[i])
+            {
+                MinimalDifference = Budget - USBs[i];
+                USB = USBs[i];
+            }
+        }
+        return USB;
+    }
 }
