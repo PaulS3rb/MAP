@@ -24,17 +24,23 @@ public class ArraysNumbers {
     }
 
     public int[] difference(int[] Array1, int[] Array2)
-    {   boolean NumberOneBigger=true;
+    {   int[] arr1;
+        int[] arr2;
+        boolean NumberOneBigger=true;
         if(!BiggerNumber(Array1,Array2)) {
-            int[] auxiliar = Array1.clone();
-            Array1=Array2;
-            Array2=auxiliar;
+            arr1=Array2.clone();
+            arr2=Array1.clone();
             NumberOneBigger=false;
         }
-        int[] result=new int[Array1.length];
-        for(int i=Array1.length-1;i>=0;i--)
+        else
         {
-            int diff=Array1[i]-Array2[i];
+            arr1=Array1.clone();
+            arr2=Array2.clone();
+        }
+        int[] result=new int[arr1.length];
+        for(int i=arr1.length-1;i>=0;i--)
+        {
+            int diff=arr1[i]-arr2[i];
             if(diff>=0)
             {
                 result[i]=diff;
@@ -43,12 +49,12 @@ public class ArraysNumbers {
             {
                 result[i]=10-abs(diff);
                 int j=i-1;
-                while(Array1[j]==0)
+                while(arr1[j]==0)
                 {
-                    Array1[j]=9;
+                    arr1[j]=9;
                     j--;
                 }
-                Array1[j]--;
+                arr1[j]--;
             }
         }
 
@@ -64,6 +70,26 @@ public class ArraysNumbers {
         if(!NumberOneBigger)
             result[0]=-result[0];
         return result;
+    }
+
+    public int[] Multiplication(int[] Array1, int multiplier)
+    {
+        int[]result=new int[Array1.length+1];
+        int carry=0;
+        for(int i=Array1.length-1;i>=0;i--)
+        {
+            int sum=Array1[i]*multiplier+carry;
+            result[i+1]=sum%10;
+            carry=sum/10;
+        }
+        result[0]=carry;
+        if(result[0]!=0)
+            return result;
+
+        int[] ShiftedResult = new int[result.length-1];
+        for(int i=0;i<result.length-1;i++)
+            ShiftedResult[i]=result[i+1];
+        return ShiftedResult;
     }
 
     private boolean BiggerNumber(int[] Array1, int[] Array2)
