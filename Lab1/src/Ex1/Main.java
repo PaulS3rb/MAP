@@ -7,8 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
         Grades object = new Grades();
-        int[] grades=new int[]{17, 29, 66 , 45, 37, 80, 93,98};
-        System.out.println("Insufficient Grades: "+Arrays.toString(object.insufficientGrade(grades)));
+        int[] grades=new int[]{29, 37, 38, 41, 84, 67};
+        System.out.println("Insufficient Grades: "+Arrays.toString(object.insufficientGrade(object.AdjustGrades(grades))));
         System.out.println("Average Grade: "+ object.AverageGrade(grades));
         System.out.println("Modified Grades: "+Arrays.toString(object.AdjustGrades(grades)));
         System.out.println("Biggest Modified Grade: "+ object.MaximalGrade(grades));

@@ -58,6 +58,7 @@ public class ArraysNumbers {
             }
         }
 
+
         if(result[0]==0)
         {
             int[] ShiftedResult = new int[result.length - 1];
