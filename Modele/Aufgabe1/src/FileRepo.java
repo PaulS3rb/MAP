@@ -2,10 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class FileRepo {
 
@@ -55,15 +52,65 @@ public class FileRepo {
         return punkte;
     }
 
+
+    public void sortByHouse() throws IOException {
+        /*List<Punkt> punkte= this.readFromFile();
+        int sumGryffindor=0, sumSlytherin=0, sumHufflepuff=0, sumRavenclaw=0;
+        for(Punkt punkt : punkte){
+            if(punkt.house.equals("Slytherin")){
+                sumSlytherin+=punkt.points;
+            }
+            if(punkt.house.equals("Hufflepuff")){
+                sumHufflepuff+=punkt.points;
+            }
+            if(punkt.house.equals("Ravenclaw")){
+                sumRavenclaw+=punkt.points;
+            }
+            if(punkt.house.equals("Gryffindor")) {
+                sumGryffindor += punkt.points;
+            }
+        }
+
+
+
+        SortedMap<Integer, String> map= new TreeMap<>();
+        map.put(sumSlytherin, "Slytherin");
+        map.put(sumHufflepuff, "Hufflepuff");
+        map.put(sumRavenclaw, "Ravenclaw");
+        map.put(sumGryffindor, "Gryffindor");
+        Map<String, Integer> result= new HashMap();
+
+        while(!map.isEmpty()){
+            System.out.println(map.lastKey());
+            this.writeToFile(map.values().toString());
+            map.remove(map.lastKey());
+        }*/
+
+
+        Map<String, Integer> housePoints = new HashMap<>();
+        housePoints.put("Gryffindor", 120);
+        housePoints.put("Slytherin", 200);
+        housePoints.put("Ravenclaw", 150);
+        housePoints.put("Hufflepuff", 100);
+
+        // Sort the map by values in descending order
+        List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(housePoints.entrySet());
+        sortedEntries.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+        System.out.println("House points sorted in descending order:");
+        for (Map.Entry<String, Integer> entry : sortedEntries) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
     public void printPunkte(List<Punkt> punkte)
     {
         for(Punkt punkt : punkte)
             System.out.println(punkt.toString());
     }
 
-    public void writeToFile() throws IOException {
+    public void writeToFile(String substring) throws IOException {
         FileWriter writer= new FileWriter("ergebnis.txt");
-        writer.write("AAAAAAAA");
+        writer.write(substring);
+        writer.close();
 
     }
 
